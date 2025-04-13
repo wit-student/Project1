@@ -53,10 +53,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 app.listen(8080,()=>{
     console.log("send message")
 })
-app.get("/",(req,res)=>{
-    res.send("got it")
-})
 
+app.get("/home",(req,res)=>{
+res.render("home.ejs")
+})
 
 app.get("/generate",(req,res)=>{
     let token = req.cookies.token;
@@ -207,9 +207,6 @@ app.get("/logout",(req,res)=>{
 })
 
 
-app.get("/home",(req,res)=>{
-res.render("home.ejs")
-})
 
 app.all("/",(req,res,next)=>{
 req.flash("error","Page not found")
