@@ -155,7 +155,7 @@ const Users=new User({
 await Users.save()
 const token = jwt.sign({ email }, "sssssss", { expiresIn: "1h" });
 res.cookie("token", token, { httpOnly: true });
- req.flash("success","user is signed up nad logged in!")
+ req.flash("success","user is signed up and logged in!")
   return res.redirect("/generate")
 })
 
