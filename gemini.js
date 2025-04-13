@@ -64,7 +64,7 @@ res.render("home.ejs")
 app.get("/generate",(req,res)=>{
     let token = req.cookies.token;
     let userEmail = "";
-    const theme = req.cookies.theme || "light-mode";
+ 
     if (token) {
         try {
             let decoded = jwt.verify(token, "sssssss");
