@@ -153,8 +153,10 @@ const Users=new User({
     email:email,
 })
 await Users.save()
-req.flash("success","user is signed up!")
-res.redirect("/generate")
+const token = jwt.sign({ email }, "sssssss", { expiresIn: "1h" });
+res.cookie("token", token, { httpOnly: true });
+ req.flash("success","user is signed up nad logged in!")
+  return res.redirect("/generate")
 })
 
 
@@ -194,7 +196,7 @@ app.post("/login", async (req, res) => {
       
        
         req.flash("success","user is logged in");
-        res.redirect("/generate");
+     return   res.redirect("/generate");
     } catch (error) {
         console.log("Login error:", error);
         req.flash("error","error occurred")
