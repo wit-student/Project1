@@ -106,7 +106,7 @@ let token = req.cookies.token;
         }
     }
 
-// ✅ Sanitize the HTML to prevent XSS attacks
+// Sanitize the HTML to prevent XSS attacks
 formattedInfo = sanitizeHtml(formattedInfo, {
     allowedTags: [],
     allowedAttributes: {},
@@ -131,9 +131,9 @@ const addinfo= new Prompt({
     console.log(error)
  })
  user.prompts.push(addinfo._id);
- await user.save(); // ✅ Save updated user
+ await user.save(); // Save updated user
 
- console.log("🟢 Updated User with Prompt:", user);
+ console.log("Updated User with Prompt:", user);
 
 res.render("index.ejs", { info: formattedInfo,prompt ,user:userEmail});
 // res.render("index.ejs",{ info:marked(info) })
@@ -174,7 +174,7 @@ app.post("/login", async (req, res) => {
          res.redirect("/login")
         }
 
-        // ✅ Use `await` with `bcrypt.compare`
+        //  Use `await` with `bcrypt.compare`
         const isMatch = await bcrypt.compare(req.body.password, user.password);
         
         if (!isMatch) {
@@ -183,16 +183,16 @@ app.post("/login", async (req, res) => {
             res.redirect("/login")
         }
 
-        // ✅ Generate JWT token
+        //  Generate JWT token
         let token = jwt.sign({ email: user.email }, "sssssss", { expiresIn: "1h" });
 
-        // ✅ Set cookie with token
+        // Set cookie with token
         res.cookie("token", token, { httpOnly: true });
 
         console.log("User logged in");
         console.log("Token:", token);
 
-        // ✅ Redirect to the generate page
+        //  Redirect to the generate page
       
        
         req.flash("success","user is logged in");
