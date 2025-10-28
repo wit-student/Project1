@@ -44,7 +44,8 @@
        <%previous.forEach(pro => {%>
             <h3 style="color:green">Your previous prompt:- <%=pro.prompt%></h3>
     
-            <h3 style="color:green">Created at:-<%=pro.created_at.toLocaleString()%></h3>
+      <h3 style="color:green">Created at: <%= pro.created_at.toLocaleDateString() %></h3>
+
             <p style=" border-radius: 1rem; color: white;">Ai response:-<%-pro.info.replace(/\n/g, "<br>").replace(/\*\*(.*?)\*\*/g, "<b>$1</b>") %></p>
             <hr>
        <% })%>
